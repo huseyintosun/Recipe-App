@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/header/Header'
 import axios from 'axios';
 import { MainContainer, HomeImg, ImgDiv } from './style'
@@ -10,7 +10,8 @@ const APP_ID = '87c3d343'
 const APP_KEY = '885bd820e7c4e0968632ae88cd4c3c93'
 
 function Home() {
-    const [query, setQuery] = useState("apple")
+    // const [query, setQuery] = useState("apple")
+    const [query, setQuery] = useState("")
     const [recipes, setRecipes] = useState()
     const [meal, setMeal] = useState(mealTypes[0].toLowerCase());
     const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${meal}`;
@@ -45,12 +46,12 @@ function Home() {
             {recipes ? (
                 <MainContainer>
                     {recipes?.map((recipe, index) => (
-                            <RecipeCardComp key={index} recipe={recipe?.recipe} />
+                        <RecipeCardComp key={index} recipe={recipe?.recipe} />
                     ))}
                 </MainContainer>
             ) : (
                 <ImgDiv>
-                <HomeImg src={homeSvg}/>
+                    <HomeImg src={homeSvg} />
                 </ImgDiv>
             )}
 
